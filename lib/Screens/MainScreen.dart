@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:android_studio_shortcuts/Screens/WindowsLinux.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +8,11 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:share/share.dart';
+import 'package:launch_review/launch_review.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../utils/constants.dart';
 import 'Mac.dart';
 
 
@@ -18,6 +24,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+
 
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
@@ -33,6 +40,8 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -373,6 +382,10 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   static  CustomeListMore() {
+    const String toLaunchPP = 'http://darshankomu.com/apps/Marathi%20Aarti%20Sangrah/privacypolicy.html';
+    const String toLaunchTC = 'http://darshankomu.com/apps/Marathi%20Aarti%20Sangrah/privacypolicy.html';
+    const String toLaunch = "https://play.google.com/store/apps/developer?id=Darshan+Komu";
+
     return ListView(
       padding: const EdgeInsets.all(8),
       children:  <Widget>[
@@ -398,8 +411,15 @@ class _MainScreenState extends State<MainScreen> {
           padding: EdgeInsets.all(2.0),
           child: ListTile( title: const Text('More App',style: TextStyle(fontSize: 22.0,color: Colors.black87),
           ),
-            onTap: (){
-
+            onTap: () async{
+              if (!await launch(
+                toLaunch,
+                forceSafariVC: false,
+                forceWebView: false,
+                headers: <String, String>{'my_header_key': 'my_header_value'},
+              )) {
+                throw 'Could not launch $toLaunchPP';
+              }
             },
             leading: Icon(LineIcons.googlePlay,color: Colors.black,),
             trailing: Icon(
@@ -417,7 +437,9 @@ class _MainScreenState extends State<MainScreen> {
           child: ListTile( title: const Text('Rate Us',style: TextStyle(fontSize: 22.0,color: Colors.black87),
           ),
             onTap: (){
-
+              LaunchReview.launch(
+                androidAppId: androidAppIdValue,
+                iOSAppId: iOSAppIdValue,);
             },
             leading: Icon(LineIcons.star,color: Colors.black,),
             trailing: Icon(
@@ -432,10 +454,12 @@ class _MainScreenState extends State<MainScreen> {
         ),
         Padding(
           padding: EdgeInsets.all(2.0),
-          child: ListTile( title: const Text('Feedback',style: TextStyle(fontSize: 22.0,color: Colors.black87),
+          child: ListTile( title: const Text('Review',style: TextStyle(fontSize: 22.0,color: Colors.black87),
           ),
             onTap: (){
-
+              LaunchReview.launch(
+                androidAppId: androidAppIdValue,
+                iOSAppId: iOSAppIdValue,);
             },
             leading: Icon(LineIcons.comment,color: Colors.black,),
             trailing: Icon(
@@ -454,7 +478,14 @@ class _MainScreenState extends State<MainScreen> {
           child: ListTile( title: const Text('Share App',style: TextStyle(fontSize: 22.0,color: Colors.black87),
           ),
             onTap: (){
-
+              if (Platform.isAndroid) {
+                // Android-specific code
+                Share.share(
+                    androidShareText + '\n' + androidAppShareLink);
+              } else if (Platform.isIOS) {
+                // iOS-specific code
+                // Share.share(iosShareText + '\n' + iosAppShareLink);
+              }
             },
             leading: Icon(LineIcons.share,color: Colors.black,),
             trailing: Icon(
@@ -471,9 +502,16 @@ class _MainScreenState extends State<MainScreen> {
           padding: EdgeInsets.all(2.0),
           child: ListTile( title: const Text('Privacy Policy',style: TextStyle(fontSize: 22.0,color: Colors.black87),
           ),
-            onTap: (){
-
-            },
+            onTap: () async{
+              if (!await launch(
+              toLaunchPP,
+              forceSafariVC: false,
+              forceWebView: false,
+              headers: <String, String>{'my_header_key': 'my_header_value'},
+              )) {
+              throw 'Could not launch $toLaunchPP';
+              }
+              },
             leading: Icon(LineIcons.certificate,color: Colors.black,),
             trailing: Icon(
               Icons.keyboard_arrow_right_outlined,
@@ -489,8 +527,15 @@ class _MainScreenState extends State<MainScreen> {
           padding: EdgeInsets.all(2.0),
           child: ListTile( title: const Text('Terms & Condition',style: TextStyle(fontSize: 22.0,color: Colors.black87),
           ),
-            onTap: (){
-
+            onTap: () async{
+              if (!await launch(
+                toLaunchTC,
+                forceSafariVC: false,
+                forceWebView: false,
+                headers: <String, String>{'my_header_key': 'my_header_value'},
+              )) {
+                throw 'Could not launch $toLaunchTC';
+              }
             },
             leading: Icon(LineIcons.file,color: Colors.black,),
             trailing: Icon(
@@ -520,5 +565,6 @@ class _MainScreenState extends State<MainScreen> {
       ],
     );
   }
+
 
 }
