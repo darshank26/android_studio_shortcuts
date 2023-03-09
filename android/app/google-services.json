@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1078053546135",
+    "project_id": "android-studio-shortcuts-19d27",
+    "storage_bucket": "android-studio-shortcuts-19d27.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078053546135:android:dc3ee08e863d4ff758a1d2",
+        "android_client_info": {
+          "package_name": "com.darshankomu.android_studio_shortcuts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078053546135-49g5mhsttk1jqde91k0p66nu2a7f32jb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBp6bcqqCRenlvqVlmDmF4l_Av3Vk4CkUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078053546135-49g5mhsttk1jqde91k0p66nu2a7f32jb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
