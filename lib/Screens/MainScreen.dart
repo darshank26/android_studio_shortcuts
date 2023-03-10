@@ -26,6 +26,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
 
 
+
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
   TextStyle(fontSize: 32, fontWeight: FontWeight.w600);
@@ -42,11 +43,13 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
 
 
-
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text("Android Studio Shortcuts",), centerTitle: true,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60.0), // here the desired height
+        child: AppBar(
+          title: const Text("Android Studio Shortcuts",), centerTitle: true,
+        ),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -382,31 +385,33 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   static  CustomeListMore() {
-    const String toLaunchPP = 'http://darshankomu.com/apps/Marathi%20Aarti%20Sangrah/privacypolicy.html';
-    const String toLaunchTC = 'http://darshankomu.com/apps/Marathi%20Aarti%20Sangrah/privacypolicy.html';
+    const String toLaunchPP = 'https://darshankomu.com/apps/AndroidStudioShortcuts/PrivacyPolicy.html';
+    const String toLaunchTC = 'https://darshankomu.com/apps/AndroidStudioShortcuts/TermsAndCondition.html';
     const String toLaunch = "https://play.google.com/store/apps/developer?id=Darshan+Komu";
 
     return ListView(
       padding: const EdgeInsets.all(8),
       children:  <Widget>[
-        Padding(
-          padding: EdgeInsets.all(2.0),
-          child: ListTile( title: const Text('About App',style: TextStyle(fontSize: 22.0,color: Colors.black87),
-          ),
-            onTap: (){
-
-            },
-            leading: Icon(LineIcons.user,color: Colors.black),
-            trailing: Icon(
-              Icons.keyboard_arrow_right_outlined,
-              color: Colors.black54,
-              size: 28,
-            ),
-          ),
-        ),
-        Divider(
-            color: Colors.black38
-        ),
+        // Padding(
+        //   padding: EdgeInsets.all(2.0),
+        //   child: ListTile( title: const Text('About App',style: TextStyle(fontSize: 22.0,color: Colors.black87),
+        //   ),
+        //     onTap: (){
+        //
+        //       Get.dialog(CustomSimpleDialog());
+        //
+        //     },
+        //     leading: Icon(LineIcons.user,color: Colors.black),
+        //     trailing: Icon(
+        //       Icons.keyboard_arrow_right_outlined,
+        //       color: Colors.black54,
+        //       size: 28,
+        //     ),
+        //   ),
+        // ),
+        // Divider(
+        //     color: Colors.black38
+        // ),
         Padding(
           padding: EdgeInsets.all(2.0),
           child: ListTile( title: const Text('More App',style: TextStyle(fontSize: 22.0,color: Colors.black87),
@@ -565,6 +570,7 @@ class _MainScreenState extends State<MainScreen> {
       ],
     );
   }
+
 
 
 }

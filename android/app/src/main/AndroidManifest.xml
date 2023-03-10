@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.darshankomu.android_studio_shortcuts">
    <application
-        android:label="android_studio_shortcuts"
+        android:label="Android Studio Shortcuts"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

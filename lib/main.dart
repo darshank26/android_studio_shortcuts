@@ -145,7 +145,7 @@ class _MyAppState extends State<MyApp> {
 
     // NOTE: Replace with your own app ID from https://www.onesignal.com
     await OneSignal.shared
-        .setAppId("2a335685-47a2-4c6a-8c19-8d926e9a529f");
+        .setAppId("9265b2d8-5dd8-4fa3-9ee4-242f1b254c87");
 
     // OneSignal.shared
     //     .setInFocusDisplayType(OSNotificationDisplayType.notification);
@@ -233,16 +233,7 @@ class _SplashScreenState extends State<IntroSplashScreen> {
       title: 'Android Studio Shortcuts',
       home: Scaffold(
         body: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomRight,
-                colors: [
-                  Colors.purple,
-                  Colors.pink,
-                  Colors.orange,
-                ],
-              )),
+          color: kprimarycolor,
           child: Stack(
             children: [
               Column(
